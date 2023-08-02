@@ -14,7 +14,7 @@ const NavBar = () => {
               href="/"
               className={`${redressed.className} font-extrabold text-2xl`}
             >
-              E-shop
+              Panzas´s Ecommerce
             </Link>
             <div className="hidden md:block">Search</div>
             <div className="flex items-center gap-8 md:gap-12">
