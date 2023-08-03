@@ -7,7 +7,10 @@ interface ProductImageProps {
 }
 
 import React from "react";
-import { CartProductType, SelectedImgType } from "./ProductDetails";
+import {
+  CartProductType,
+  SelectedImgType,
+} from "../../product/[productId]/ProductDetails";
 import Image from "next/image";
 
 const ProductImage: React.FC<ProductImageProps> = ({
@@ -34,6 +37,7 @@ const ProductImage: React.FC<ProductImageProps> = ({
                 alt={image.color}
                 fill
                 className="object-contain"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
           );

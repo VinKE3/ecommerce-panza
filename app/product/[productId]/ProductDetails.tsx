@@ -3,8 +3,9 @@ import Button from "@/app/components/Button";
 import SetColor from "@/app/components/products/SetColor";
 import SetQuantity from "@/app/components/products/SetQuantity";
 import { Rating } from "@mui/material";
-import { useState, useCallback } from "react";
-import ProductImage from "./ProductImage";
+import { useState, useCallback, useEffect } from "react";
+import ProductImage from "../../components/products/ProductImage";
+import { useCart } from "@/hooks/useCart";
 interface ProductDetailsProps {
   product: any;
 }
@@ -31,6 +32,8 @@ const Horizontal = () => {
 };
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
+  const { cartProducts, handleAddProductToCart } = useCart();
+  const [isProductInCart, setIsProductInCart] = useState(false);
   const [cartProduct, setCardProduct] = useState<CartProductType>({
     id: product.id,
     name: product.name,
@@ -41,6 +44,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     quantity: 1,
     price: product.price,
   });
+
   const productRating =
     product.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) /
     product.reviews.length;
@@ -77,6 +81,8 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
       };
     });
   }, [cartProduct]);
+
+  useEffect(() => {}, [cartProduct]);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 ">
       <ProductImage
@@ -116,7 +122,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         />
         <Horizontal />
         <div className="max-w-[300px]">
-          <Button label="Agregar al carrito" onClick={() => {}} />
+          <Button
+            label="Agregar al carrito"
+            onClick={() => handleAddProductToCart(cartProduct)}
+          />
         </div>
       </div>
     </div>
