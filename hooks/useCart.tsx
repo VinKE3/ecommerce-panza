@@ -79,7 +79,7 @@ export const CartContextProvider = (props: Props) => {
         updatedCart = [product];
       }
 
-      toast.success("Product added to cart");
+      toast.success("Producto agregado al carrito");
       localStorage.setItem("eShopCartItems", JSON.stringify(updatedCart));
       return updatedCart;
     });
@@ -88,7 +88,6 @@ export const CartContextProvider = (props: Props) => {
   const handleRemoveProductFromCart = useCallback(
     (product: CartProduct) => {
       if (cartProducts) {
-        console.log("cartP", cartProducts, product);
         const filteredProducts = cartProducts?.filter((item) => {
           return item.id !== product.id;
         });

@@ -42,7 +42,14 @@ const CartClient = () => {
       </div>
       <div className="border-t-[1.5px] border-slate-200 py-4 flex justify-between gap-4">
         <div className="w-[10rem]">
-          <Button label="Limpiar Carrito" onClick={() => {}} small outline />
+          <Button
+            label="Limpiar Carrito"
+            onClick={() => {
+              handleClearCart();
+            }}
+            small
+            outline
+          />
         </div>
         <div className="text-sm flex flex-col gap-1 items-start">
           <div className="flex justify-between w-full text-base font-semibold">
