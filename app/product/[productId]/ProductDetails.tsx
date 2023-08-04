@@ -12,7 +12,7 @@ interface ProductDetailsProps {
   product: any;
 }
 
-export type CartProductType = {
+export type CartProduct = {
   id: string;
   name: string;
   description: string;
@@ -36,7 +36,7 @@ const Horizontal = () => {
 const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   const { cartProducts, handleAddProductToCart } = useCart();
   const [isProductInCart, setIsProductInCart] = useState(false);
-  const [cartProduct, setCardProduct] = useState<CartProductType>({
+  const [cartProduct, setCardProduct] = useState<CartProduct>({
     id: product.id,
     name: product.name,
     description: product.description,
@@ -89,7 +89,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     setIsProductInCart(false);
     if (cartProducts) {
       const existingIndex = cartProducts.findIndex(
-        (item: CartProductType) => item.id === product.id
+        (item: CartProduct) => item.id === product.id
       );
       if (existingIndex > -1) {
         setIsProductInCart(true);
