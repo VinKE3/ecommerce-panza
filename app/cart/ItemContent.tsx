@@ -6,6 +6,7 @@ import { truncateText } from "@/utils/truncateText";
 import Image from "next/image";
 import SetQuantity from "../components/products/SetQuantity";
 import { useCart } from "@/hooks/useCart";
+import { AiFillDelete } from "react-icons/ai";
 
 interface ItemContentProps {
   item: CartProductType;
@@ -35,10 +36,13 @@ const ItemContent: React.FC<ItemContentProps> = ({ item }) => {
           <div>{item.selectedImg.color}</div>
           <div className="w-[70px]">
             <button
-              className="text-slate-500 underline"
+              className="text-slate-500 underline flex gap-1"
               onClick={() => handleRemoveProductFromCart(item)}
             >
               Eliminar
+              <span>
+                <AiFillDelete size={16} />
+              </span>
             </button>
           </div>
         </div>
